@@ -6,7 +6,7 @@ A command line simulation of the Hex board game (Human vs AI)
 
 Hex is a strategy board game for two players, B (black) and W (white), played on a hexagonal grid. Players alternate placing their colored pieces, on unoccupied spaces of the board. The goal is to make a continuous chain from their side of the board to the opposite. The first player to do so, wins.
 
-More info on the Hex Game can be found here: https://en.wikipedia.org/wiki/Hex_(board_game)
+More info on the Hex Game can be found [here](https://en.wikipedia.org/wiki/Hex_(board_game))
 
 ## Getting to play
 
