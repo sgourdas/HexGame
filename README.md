@@ -31,8 +31,6 @@ You can give the following arguments in the command line:
 
 -s : Enables the swap rule (default = disabled).
 
-##Available arguments and commands
-
 ### Commands during gameplay
 You can give the following commands at any point of the game:
 
