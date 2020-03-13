@@ -16,8 +16,6 @@ Enter the ``` make ``` command while in the */HexGame/* directory
 
 ### Execution 
 
-Type:
-
 Type ``` ./hex ``` while in the game's directory
 
 ### Command line arguments
@@ -39,6 +37,7 @@ You can give the following commands at any point of the game:
 • ``` play <move> ``` : User performs said \<move\> (format "L#" where L is a Capital Letter and # a Number).
 
 • ``` cont ``` : The AI makes a move.
+
 NOTE: At this stage, the AI is not properly functioning. This will be improved in future commits. 
 
 • ``` suggest ``` : The AI suggests a move.
