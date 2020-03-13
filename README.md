@@ -58,4 +58,4 @@ NOTE: At this stage, the AI is not properly functioning. This will be improved i
 
 
 ## About
-- This is a first semester assignment, by professor [P.Stamatopoulos](http://cgi.di.uoa.gr/~takis/Welcome.html), for the Department of Informatics and Telecommunications, Uoa.
+- This is a first semester assignment, by professor [P.Stamatopoulos](http://cgi.di.uoa.gr/~takis/Welcome.html), for the Department of Informatics and Telecommunications, Uoa. It was recommended for 2 people, but I dicided to take it on solo.
