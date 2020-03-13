@@ -27,14 +27,14 @@ You can give the following arguments in the command line:
 
 ``` -d \<difficulty\> ``` : Sets the game difficulty (default = 1).
 
-``` -b : ``` Sets human as the black player (default = white).
+``` -b ``` : Sets human as the black player (default = white).
 
-``` -s : ``` Enables the swap rule (default = disabled).
+``` -s ``` : Enables the swap rule (default = disabled).
 
 ### Commands during gameplay
 You can give the following commands at any point of the game:
 
-• ``` newgame \[white|black\[swapoff|swapon \[\<size>]]] ``` : Starts a new game based on the parameters given.
+• ``` newgame [white|black [swapoff|swapon [size]]] ``` : Starts a new game based on the parameters given.
 
 • ``` play \<move\> ``` : User performs said \<move\> (format "L#" where L is a Capital Letter and # a Number).
 
