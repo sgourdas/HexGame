@@ -23,62 +23,39 @@ Type ``` ./hex ``` while in the game's directory
 ### Command line arguments
 You can give the following arguments in the command line:
 
--n \<size\> : Sets the size of the board (default = 11).
+``` -n \<size\> ``` : Sets the size of the board (default = 11).
 
--d \<difficulty\> : Sets the game difficulty (default = 1).
+``` -d \<difficulty\> ``` : Sets the game difficulty (default = 1).
 
--b : Sets human as the black player (default = white).
+``` -b : ``` Sets human as the black player (default = white).
 
--s : Enables the swap rule (default = disabled).
+``` -s : ``` Enables the swap rule (default = disabled).
 
 ### Commands during gameplay
 You can give the following commands at any point of the game:
 
-• newgame  \[white|black\[swapoff|swapon \[\<size>]]]
+• ``` newgame \[white|black\[swapoff|swapon \[\<size>]]] ``` : Starts a new game based on the parameters given.
 
-Starts a new game based on the parameters given.
+• ``` play \<move\> ``` : User performs said \<move\> (format "L#" where L is a Capital Letter and # a Number).
 
-• play \<move\>
-
-User performs said \<move\>. 
-- Note that acceptable moves are of the format "L#" where L is a Capital Letter and # a number.
-
-• cont
-
-The AI makes a move.
+• ``` cont ``` : The AI makes a move.
 NOTE: At this stage, the AI is not properly functioning. This will be improved in future commits. 
 
-• suggest
+• ``` suggest ``` : The AI suggests a move.
 
-The AI suggests a move.
+• ``` undo ``` : Reverts back one move.
 
-• undo
+• ``` level \<difficulty\> ``` : Sets the difficulty level to \<difficulty\>.
 
-Reverts back one move.
+• ``` swap ``` : If the swap rule is on, performs the swap move for the user.
 
-• level \<difficulty\>
+• ``` save \<statefile\> ``` : Saves the current state of the game in the file named \<statefile\>.
 
-Sets the difficulty level to \<difficulty\>.
+• ``` load \<statefile\> ``` : Loads the gamee state saved in the file named \<statefile\>.
 
-• swap
+• ``` showstate ``` : Prints the current game state.
 
-If the swap rule is on, performs the swap move for the user.
-
-• save \<statefile\>
-  
-Saves the current state of the game in the file named \<statefile\>.
-
-• load \<statefile\>
-  
-Loads the gamee state saved in the file named \<statefile\>.
-
-• showstate
-
-Prints the current game state.
-
-• quit
-
-Quits the game.
+• ``` quit ``` : Quits the game.
 
 
 ## About
