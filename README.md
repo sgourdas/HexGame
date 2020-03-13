@@ -2,25 +2,23 @@
 A command line simulation of the Hex board game (Human vs AI)
 
 
-### Information about the game
+## Information about the game
 
 Hex is a strategy board game for two players, B (black) and W (white), played on a hexagonal grid. Players alternate placing their colored pieces, on unoccupied spaces of the board. The goal is to make a continuous chain from their side of the board to the opposite. The first player to do so, wins.
 
 More info on the Hex Game can be found here: https://en.wikipedia.org/wiki/Hex_(board_game)
 
+## Getting to play
+
 ### Compilation
 
 Enter the ``` make ``` command while in the */HexGame/* directory
-
 
 ### Execution 
 
 Type:
 
 Type ``` ./hex ``` while in the game's directory
-
-
-## Available arguments and commands
 
 ### Command line arguments
 You can give the following arguments in the command line:
@@ -33,7 +31,7 @@ You can give the following arguments in the command line:
 
 -s : Enables the swap rule (default = disabled).
 
-
+##Available arguments and commands
 
 ### Commands during gameplay
 You can give the following commands at any point of the game:
@@ -50,6 +48,7 @@ User performs said \<move\>.
 • cont
 
 The AI makes a move.
+NOTE: At this stage, the AI is not properly functioning. This will be improved in future commits. 
 
 • suggest
 
@@ -82,9 +81,6 @@ Prints the current game state.
 • quit
 
 Quits the game.
-
-
-NOTE: At the current state, the AI is pretty dumb. This will be improved in futuree commits. 
 
 
 ## About
