@@ -2,18 +2,15 @@
 #include "f_header.h"
 
 
-char *subStr( char *str1, char *str2, int part ) { /*    subStr is a function that copies the part
+char *subStr(char *str1, char *str2, int part) { /*    subStr is a function that copies the part
 													     substring of str1 to str2 and returns str2's 
 													  address - "parts" are strings seperated by spaces  */
 	int i = 0, j = 0;
 
-	while( part > 1 ) {
+	while(part > 1) {
 
-		while( *(str1 + i) != ' ' ) { /* cycle through parts */
-
+		while(str1[i] != ' ') /* cycle through parts */
 			i++;
-
-		}
 
 		i++;
 		part--;
@@ -22,31 +19,28 @@ char *subStr( char *str1, char *str2, int part ) { /*    subStr is a function th
 
 	/* here we have reached the part we want to copy */
 
-	while( *(str1 + i) != ' ' ) {
+	while(!(str1[i] == ' ' || str1[i] == '\0')) {	//copy chars until we find a space or end of char
 
-		*(str2 + j) = *(str1 + i);
+		str2[j] = str1[i];
 		i++;
 		j++;
 
 	}
 
-	*(str2 + j) = '\0';
+	str2[j] = '\0';
 
 	return str2;
 
 }
 
-int partCount( char *str ) { /* partCount function just counts how many parts str has */
+int partCount(char *str) { /* partCount function just counts how many parts str has (counts spaces) */
 
 	int parts = 1, i = 0;
 
-	while( *(str + i) != '\0' ) {
+	while(str[i] != '\0') {
 
-		if( *(str + i) == ' ' ) {
-
+		if(str[i] == ' ')
 			parts++;
-
-		}
 
 		i++;
 
@@ -62,7 +56,7 @@ void boardDisp(char **board, int size) { /* Displays the current state of the bo
 
 	//white
 
-	for(i = 0 ; i < size / 2 ; i++ ) 
+	for(i = 0 ; i < size / 2 ; i++) 
 		printf("   ");
 
 	printf("    W H I T E\n    ");
@@ -90,24 +84,26 @@ void boardDisp(char **board, int size) { /* Displays the current state of the bo
 
 	//Looping cells
 
-	for( i = 0 ; i < size ; i++ ) {
+	for(i = 0 ; i < size ; i++) {
 
-		for( j = 0 ; j < i ; j++ )
+		for(j = 0 ; j < i ; j++)
 			printf(" ");
 
-		for( j = 0 ; j < i ; j++ )////////////////
+		for(j = 0 ; j < i ; j++)
 			printf(" ");
 
 		printf("%d", j + 1);
+
 		if(i < 9)
 			printf(" ");
+
 		printf("|");
 
-		for( j = 0 ; j < size ; j++ ) {
+		for(j = 0 ; j < size ; j++) {
 
 			printf(" ");
 			
-			if( board[i][j] != 'n' )//PRINT EMPTY CELLS WHEN == "N"
+			if(board[i][j] != 'n')
 				printf("%c", board[i][j]);
 			else 
 				printf(" ");
@@ -118,34 +114,36 @@ void boardDisp(char **board, int size) { /* Displays the current state of the bo
 
 		printf(" %d", i + 1);
 
-		if ( i == ( size / 2 - 1) ) //!
+		if (i == (size / 2 - 1))
 			printf("  B");
-		if ( i == ( size / 2 ) ) //!
+
+		if (i == (size / 2))
 			printf("  A");
-		if ( i == ( size / 2 + 1 ) ) //!
+
+		if (i == (size / 2 + 1))
 			printf("  K");
 
 		printf("\n");
 
-		////////
-
-		for( j = 0 ; j < i ; j++ )
+		for(j = 0 ; j < i ; j++)
 			printf(" ");
+
 		printf("   ");
 
 
-		for( j = 0 ; j < i ; j++ )////////////////
+		for(j = 0 ; j < i ; j++)
 			printf(" ");
 
-		for( j = 0 ; j < size ; j++ )
+		for(j = 0 ; j < size ; j++)
 			printf("\\_/ ");
 
-		if( i != size - 1 )
+		if(i != size - 1)
 			printf("\\");
 
-		if ( i == ( size / 2 - 1) ) //!
+		if (i == (size / 2 - 1))
 			printf("    L");
-		if ( i == ( size / 2 ) ) //!
+
+		if (i == (size / 2))
 			printf("    C");
 
 		printf("\n");
@@ -158,54 +156,46 @@ void boardDisp(char **board, int size) { /* Displays the current state of the bo
 
 void next(int nextPlayer, int user) { /* Message for next Player */
 
-	if( !nextPlayer ) {
-		    	
+	if(!nextPlayer)
 		printf("White player ");
-
-    } else {
-
+    else
     	printf("Black player ");
-
-    }
 		    
-    if( nextPlayer == user ) {
-		   
+    if(nextPlayer == user)	   
 	   	printf("(human) ");
-		   
-    }
 		    
     printf("plays now.\n");
 
 }
 
-int win( char **board, int size, int player ) { /* Determines whether someone has won */
+int win(char **board, int size, int player) { /* Determines whether someone has won */
 
 	int i, *won;
 
 	*won = 0;
 
-	for( i = 0 ; i < size ; i++ ) {
+	for(i = 0 ; i < size ; i++) {
 		
-		if( board[i][0] == 'b' ) {
+		if(board[i][0] == 'b') {
 		
 			board[i][0] = 'n';
-			seq( board, size, i, 0, won, 'b' );				
+			seq(board, size, i, 0, won, 'b');				
 			board[i][0] = 'b';
 			
-			if( *won ) {
+			if(*won) {
 
 				printf("\n");
 				break;
 
 			}
 		
-		} else if( board[0][i] == 'w' ) {
+		} else if(board[0][i] == 'w') {
 			
 			board[0][i] = 'n';
-			seq( board, size, 0, i, won, 'w' );			
+			seq(board, size, 0, i, won, 'w');			
 			board[0][i] = 'w';
 			
-			if( *won ) {
+			if(*won) {
 
 				printf("\n");
 				break;
@@ -216,9 +206,9 @@ int win( char **board, int size, int player ) { /* Determines whether someone ha
 
 	}
 
-	if( *won ) {
+	if(*won) {
 
-		if( player )
+		if(player)
 			printf("Black");
 		else
 			printf("White");
@@ -231,11 +221,12 @@ int win( char **board, int size, int player ) { /* Determines whether someone ha
 
 }
 
-int seq( char **board, int size, int i, int j, int *won, char player ) {
+int seq(char **board, int size, int i, int j, int *won, char player) {
 
-	if( (( (i == size - 1) && (player == 'w')) || (j == size - 1) && (player == 'b')) ) { /* Win Condition */
+	if((((i == size - 1) && (player == 'w')) || (j == size - 1) && (player == 'b'))) { /* Win Condition */
+		
 		*won = 1;
-		printf( "Win with path: %c%d", j+65, i+1 );
+		printf("Win with path: %c%d", j+65, i+1);
 		return 0;
 
 	}
@@ -244,111 +235,119 @@ int seq( char **board, int size, int i, int j, int *won, char player ) {
 
 	copy = malloc(size * sizeof(char *));
 
-    for( int z = 0 ; z < size ; z++ ) {
+    for(int z = 0 ; z < size ; z++)
+        copy[z] = malloc(size * sizeof(char));
 
-        *(copy + z) = malloc(size * sizeof(char));
-
-    }
-
-    for( int z = 0 ; z < size ; z++ ) {
-
-	    for( int k = 0 ; k < size ; k++ ) {
-
+    for(int z = 0 ; z < size ; z++)
+	    for(int k = 0 ; k < size ; k++)
 	      	copy[z][k] = board[z][k];
-
-	    }
-
-	}
 	
 	/* Check "neighbour-cells" */
 
-	if( ( i - 1 >= 0 ) && !(*won) ) {
-		if ( board[i-1][j] == player ) {
+	if((i - 1 >= 0) && !(*won)) {
+
+		if (board[i-1][j] == player) {
 			
 			board[i-1][j] = 'n';
-			seq( board, size, i-1, j, won, player );			
+			seq(board, size, i-1, j, won, player);			
 			board[i-1][j] = player;
-			if( *won )
-				printf( " - %c%d", j+65, i+1 );
+
+			if(*won)
+				printf(" - %c%d", j+65, i+1);
+
 		}
+
 	}
 	
-	if( ( i + 1 < size ) && !(*won) ) {
-		if( board[i+1][j] == player ) {
+	if((i + 1 < size) && !(*won)) {
+
+		if(board[i+1][j] == player) {
 			
 			board[i+1][j] = 'n';
-			seq( board, size, i+1, j, won, player );			
+			seq(board, size, i+1, j, won, player);			
 			board[i+1][j] = player;
-			if( *won )
-				printf( " - %c%d", j+65, i+1 );
+
+			if(*won)
+				printf(" - %c%d", j+65, i+1);
 
 		}
+
 	}
 	
-	if( ( j - 1 >= 0 ) && !(*won) ) {
-		if( board[i][j-1] == player ) {
+	if((j - 1 >= 0) && !(*won)) {
+
+		if(board[i][j-1] == player) {
 			
 			board[i][j-1] = 'n';
-			seq( board, size, i, j-1, won, player );			
+			seq(board, size, i, j-1, won, player);			
 			board[i][j-1] = player;
-			if( *won )
-				printf( " - %c%d", j+65, i+1 );
+
+			if(*won)
+				printf(" - %c%d", j+65, i+1);
 
 		}
+
 	}
 	
-	if( ( j < size ) && !(*won) ) {
-		if( board[i][j+1] == player ) {
+	if((j < size) && !(*won)) {
+
+		if(board[i][j+1] == player) {
 			
 			board[i][j+1] = 'n';
-			seq( board, size, i, j+1, won, player );			
+			seq(board, size, i, j+1, won, player);			
 			board[i][j+1] = player;
-			if( *won )
-				printf( " - %c%d", j+65, i+1 );
+
+			if(*won)
+				printf(" - %c%d", j+65, i+1);
 
 
 		}	
+
 	}
 	
-	if( ( j + 1 < size ) && ( i - 1 >= 0 ) && !(*won) ) {
-		if( ( board[i-1][j+1] == player ) ) {
+	if((j + 1 < size) && (i - 1 >= 0) && !(*won)) {
+
+		if((board[i-1][j+1] == player)) {
 			
 			board[i-1][j+1] = 'n';
-			seq( board, size, i-1, j+1, won, player );			
+			seq(board, size, i-1, j+1, won, player);			
 			board[i-1][j+1] = player;
-			if( *won )
-				printf( " - %c%d", j+65, i+1 );
-			
 
+			if(*won)
+				printf(" - %c%d", j+65, i+1);
+			
 		}
 	}
 
-	if( ( j - 1 >= 0 ) && ( i + 1 < size ) && !(*won) ) {
-		if( board[i+1][j-1] == player ) {
+	if((j - 1 >= 0) && (i + 1 < size) && !(*won)) {
+
+		if(board[i+1][j-1] == player) {
 			
 			board[i+1][j-1] = 'n';
-			seq( board, size, i+1, j-1, won, player );			
+			seq(board, size, i+1, j-1, won, player);			
 			board[i+1][j-1] = player;
-			if( *won )
-				printf( " - %c%d", j+65, i+1 );
+
+			if(*won)
+				printf(" - %c%d", j+65, i+1);
+
 		}
 			
 	}
 
 }
 
-int max( int var1, int var2 ) { /* Returns bigger of the two values */
+int max(int var1, int var2) { /* Returns bigger int */
 
-	if( var1 >= var2 )
+	if(var1 >= var2)
 		return var1;
 	else
 		return var2;
 
 }
 
-int min( int var1, int var2 ) { /* Returns smaller of the two values */
+int min(int var1, int var2) { /* Returns smaller int */
 
-	if( var1 <= var2 )
+	if(var1 <= var2)
 		return var1;
 	else
 		return var2;
